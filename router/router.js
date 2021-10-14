@@ -7,7 +7,6 @@ const sender = require("../services/sender.service");
 
 const router = app.Router();
 
-//In the path i can pull the Channel and post messages to it
 router.all("/*", (req, res) => {
   try {
     const { channel,rabbit } = req.locals,
