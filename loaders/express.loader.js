@@ -12,7 +12,7 @@ const rabbit = new RabbitMQ(process.env.URL_RABBITMQ);
 const setup = async (app) => {
     await rabbit.init();
 
-    //
+    //conection to the reciver
     setInterval(async()=>await rabbit.init(), 10000);
 
     app.use(cors());
