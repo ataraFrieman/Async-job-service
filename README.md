@@ -30,4 +30,31 @@ One per sender
 And one to reciver
 
 
+
+postman request exam:
+All requests must contain in body:
+{"msg":"..."}!!!
+
+1. type:POST
+url:http://localhost:5000/email/ihihi1425hvy/status?status=recived
+
+in the body use json format with:
+{"msg":"recived"}
+
+2.type:GET
+url:http://localhost:5000/emails/1234568
+
+in the body use json format with:
+{"msg":"paid up"}
+
+3. type:PUT
+url:http://localhost:5000
+get an error;
+
+link to collection:
+https://www.getpostman.com/collections/64c919dccfcb4d2ccd0d
+
 Thank you!!
+
+
+
