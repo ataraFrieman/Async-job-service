@@ -19,7 +19,7 @@ router.all("/*", (req, res) => {
           return;
     }
     sender.startSender(channel,typeQueue,data)
-    reciver.start(typeQueue);
+    reciver.startRecive(typeQueue);
     res.sendStatus(200);
   } catch (err) {
     console.log(err);

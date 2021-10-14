@@ -4,7 +4,7 @@ const rabbitMQ = require("../models/rabbitMq");
 const fs = require("fs");
 const path = require("path");
 
-const start = async (typeQueue) => {
+const startRecive = async (typeQueue) => {
   const rabbit = new rabbitMQ(process.env.URL_RABBITMQ);
   rabbit.addMessageHandler(typeQueue, (channel, msg) => {
 
@@ -25,5 +25,5 @@ const writeDataToLog = (fileName, content) => {
 };
 
 module.exports = {
-  start
+  startRecive
 };
