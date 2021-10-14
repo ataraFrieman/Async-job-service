@@ -11,18 +11,23 @@ const rabbit = new RabbitMQ(process.env.URL_RABBITMQ);
 
 const setup = async (app) => {
     await rabbit.init();
+
+    //
+    setInterval(async()=>await rabbit.init(), 10000);
+
     app.use(cors());
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));
 
     // Middleware to run for all requests that need RabbitMQ
-    //create a chanel for every request
+    //create a chanel for every request and pass the rabbit
     app.use(async (req, _res, next) => {
         try {
             const connection = rabbit.connection;
             const channel = await connection.createChannel();
             req.locals = req.locals || {};
             req.locals.channel = channel;
+            req.locals.rabbit = rabbit;
             return next();
         } catch (err) {
             console.log(err);

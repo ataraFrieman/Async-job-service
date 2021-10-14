@@ -4,8 +4,8 @@ const rabbitMQ = require("../models/rabbitMq");
 const fs = require("fs");
 const path = require("path");
 
-const startRecive = async (typeQueue) => {
-  const rabbit = new rabbitMQ(process.env.URL_RABBITMQ);
+const initialRecive = async (typeQueue,rabbit) => {
+  // const rabbit = new rabbitMQ(process.env.URL_RABBITMQ);
   rabbit.addMessageHandler(typeQueue, (channel, msg) => {
 
     //write to logs files and to console.
@@ -14,7 +14,7 @@ const startRecive = async (typeQueue) => {
     channel.ack(msg);
   });
 
-  await rabbit.init();
+  //await rabbit.init();
 };
 
 const writeDataToLog = (fileName, content) => {
@@ -25,5 +25,5 @@ const writeDataToLog = (fileName, content) => {
 };
 
 module.exports = {
-  startRecive
+  initialRecive
 };

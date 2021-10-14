@@ -10,7 +10,7 @@ const router = app.Router();
 //In the path i can pull the Channel and post messages to it
 router.all("/*", (req, res) => {
   try {
-    const { channel } = req.locals,
+    const { channel,rabbit } = req.locals,
       typeQueue = req.originalUrl.split("/")[1],
           data = { type: typeQueue, payload: req.body.msg };
       
@@ -18,8 +18,9 @@ router.all("/*", (req, res) => {
           res.sendStatus(500);
           return;
     }
+
     sender.startSender(channel,typeQueue,data)
-    reciver.startRecive(typeQueue);
+    reciver.initialRecive(typeQueue,rabbit);
     res.sendStatus(200);
   } catch (err) {
     console.log(err);

@@ -7,6 +7,7 @@ const amqp = require("amqplib/callback_api");
 class RabbitMQ {
   constructor(url) {
     this.url = url;
+    this.connection = null;
     this.messageHandlers = [];
   }
 
