@@ -3,6 +3,8 @@
 const app = require("express");
 
 const reciver = require("../services/reciver.service");
+const sender = require("../services/sender.service");
+
 const router = app.Router();
 
 //In the path i can pull the Channel and post messages to it
@@ -15,9 +17,8 @@ router.all("/*", (req, res) => {
       if (typeQueue === '') {
           res.sendStatus(500);
           return;
-      }
-    channel.assertQueue(typeQueue);
-    channel.sendToQueue(typeQueue, Buffer.from(JSON.stringify(data)));
+    }
+    sender.startSender(channel,typeQueue,data)
     reciver.start(typeQueue);
     res.sendStatus(200);
   } catch (err) {

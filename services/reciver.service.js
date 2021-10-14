@@ -25,5 +25,5 @@ const writeDataToLog = (fileName, content) => {
 };
 
 module.exports = {
-  start,
+  start
 };
