@@ -4,7 +4,6 @@ const app = require("express");
 
 const reciver = require("../services/reciver.service");
 const sender = require("../services/sender.service");
-
 const router = app.Router();
 
 router.all("/*", (req, res) => {
