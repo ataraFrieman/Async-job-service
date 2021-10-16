@@ -18,7 +18,7 @@ In the models folder :
 There is a model called rabbitmq
 this is basically the model through which 
 i connect and save the messages in queque
-it holds a boot and create chanel function
+it holds a arr and create chanel function
 and the execution function of the messages
 
 -------------------------------------------------------------
